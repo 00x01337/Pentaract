@@ -28,8 +28,8 @@ RUN cargo build --target x86_64-unknown-linux-musl --release
 FROM node:22-slim AS ui
 WORKDIR /app
 COPY ./ui .
-RUN npm install -g pnpm
-RUN pnpm i
+RUN npm install -g pnpm@9
+RUN pnpm i --config.only-built-dependencies=esbuild
 ENV VITE_API_BASE /api
 RUN pnpm run build
 
