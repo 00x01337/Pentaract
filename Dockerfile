@@ -29,7 +29,7 @@ FROM node:22-slim AS ui
 WORKDIR /app
 COPY ./ui .
 RUN npm install -g pnpm
-RUN pnpm i
+RUN pnpm i --allow-build=esbuild
 ENV VITE_API_BASE /api
 RUN pnpm run build
 
